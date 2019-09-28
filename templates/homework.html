@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+
+<body>
+    <ul>
+        {# this is commit #}
+        {{ num_array | join:"˙ ˙" }}
+
+        {% for num in num_array %}
+        <li>{{ num }}</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
