@@ -1,0 +1,18 @@
+{% extends "posts/_layout.html" %}
+
+{% block title %}Show{% endblock %}
+
+{% block main %}
+    <a class="btn btn-outline-info btn-sm float-right ml-2" href="{% url 'posts:edit' post.id %}">Edit</a>
+    <a class="btn btn-outline-danger btn-sm float-right" href="{% url 'posts:delete' post.id %}">Delete</a>
+
+    <h1>#{{ post.id }} - {{ post.title }}</h1>
+
+    <hr>
+
+    {{ post.content }}
+
+    <hr>
+
+    <a href="{% url 'posts:index' %}"><< Back to list</a>
+{% endblock %}
