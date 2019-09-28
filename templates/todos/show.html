@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% load bootstrap4 %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <a href="{% url 'todos:delete' todo.id %}" class="btn btn-danger float-right mt-1">Delete</a>
+            <a href="{% url 'todos:edit' todo.id %}" class="btn btn-info float-right mt-1 mx-2">Edit</a>
+
+            <h1>#{{ todo.id }} {{ todo.title }}</h1>
+            <hr>
+            <p>
+                tag: {{ todo.tags.all | join:',' }}
+            </p>
+            <p>
+                {{ todo.content }}
+            </p>
+        </div>
+    </div>
+{% endblock %}

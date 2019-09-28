@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Todo List</title>
+
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+</head>
+
+<body>
+{# {property}{sides}-{size} #}
+{# {m = margin}{y = y軸}{上下位移 = 3} #}
+<div class="container my-3">
+    <div class="row">
+        <div class="col-12 mb-3">
+            {% if user.is_authenticated %}
+                Hello, {{ request.user.username }}!!!
+                <a href="{% url 'logout' %}" class="btn btn-outline-danger float-right">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-outline-info float-right">Login</a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% block body %}{% endblock %}
+</div>
+</body>
+
+</html>
