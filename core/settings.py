@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'tutorial',
     'posts',
     'todos',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -88,6 +89,17 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'todo',
+    #     'USER': 'Todo',
+    #     'PASSWORD': 'mysql',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': '3306',
+    #     'OPTIONS': {
+    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+    #     },
+    # }
 }
 
 
@@ -128,3 +140,32 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Login url
+
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/todos/'
+
+LOGOUT_REDIRECT_URL = '/login/'
+
+
+# Email
+
+EMAIL_USE_TLS = True
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_PORT = 587
+
+with open(os.path.join(BASE_DIR, 'core', 'email.txt'), 'r') as file:
+    datas = file.readlines()
+
+EMAIL_HOST_USER = datas[0].replace('\n', '')
+
+EMAIL_HOST_PASSWORD = datas[1].replace('\n', '')

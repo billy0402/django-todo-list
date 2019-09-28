@@ -25,7 +25,7 @@ def new(request):
         # todo.save()
         # form.save_m2m()
         todo = form.save(request.user)
-        return redirect('todo:index')
+        return redirect('todos:index')
 
     return render(request, 'todos/new.html', {'form': form})
 
@@ -41,7 +41,7 @@ def edit(request, pk):
     form = TodoModelForm(request.POST or None, request.FILES or None, instance=todo)
     if form.is_valid():
         todo = form.save(request.user)
-        return redirect('todo:show', pk)
+        return redirect('todos:show', pk)
 
     return render(request, 'todos/edit.html', {'form': form})
 
@@ -49,9 +49,9 @@ def edit(request, pk):
 @login_required
 def delete(request, pk):
     form = DeleteConfirmForm(request.POST or None)
-    if form.is_valid() and form.cleaned_data['check'] == True:
+    if form.is_valid() and form.cleaned_data['check']:
         post = get_object_or_404(Todo, pk=pk)
         post.delete()
-        return redirect('todo:index')
+        return redirect('todos:index')
 
     return render(request, 'todos/delete.html', {'form': form})
