@@ -49,6 +49,7 @@ urlpatterns = [
     path('tutorial/', include('tutorial.urls')),
     path('posts/', include('posts.urls')),
     path('todos/', include('todos.urls')),
+    path('api/', include('api.urls')),
 
     path('jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
